@@ -12,13 +12,13 @@ Desenvolver um sistema capaz de detectar a luminosidade ambiente e acionar autom
 
 ## 🛠️ Componentes Utilizados
 
-* 🔹 Arduino Uno
-* 🔹 Sensor LDR
-* 🔹 ESP8266
-* 🔹 LED
-* 🔹 Resistores
-* 🔹 Protoboard
-* 🔹 Jumpers
+* Arduino Uno
+* Sensor LDR
+* ESP8266
+* LED
+* Resistores
+* Protoboard
+* Jumpers
 
 ---
 
@@ -46,15 +46,3 @@ A comunicação entre os dispositivos pode ser realizada utilizando o protocolo 
 * 👤 Matheus Neves Cavalcante
 * 👤 Maryse Ravel Silva Castro
 * 👤 Vitoria De Souza Santos
-
----
-
-## 📂 Estrutura do Projeto
-
-```bash
-📁 projeto-iluminacao-urbana
- ├── 📄 codigo_arduino.ino
- ├── 📄 README.md
- ├── 📁 imagens
- └── 📁 simulacao
-```
