@@ -4,7 +4,7 @@ Projeto acadêmico desenvolvido utilizando **Arduino Uno**, sensor **LDR**, **ES
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivo 
 
 Desenvolver um sistema capaz de detectar a luminosidade ambiente e acionar automaticamente a iluminação, contribuindo para a eficiência energética em ambientes urbanos. 🌎🔋
 
