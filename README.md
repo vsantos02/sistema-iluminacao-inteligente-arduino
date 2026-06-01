@@ -14,7 +14,7 @@ Desenvolver um sistema capaz de detectar a luminosidade ambiente e acionar autom
 
 * Arduino Uno
 * Sensor LDR
-* ESP8266
+* ESP32
 * LED
 * Resistores
 * Protoboard
