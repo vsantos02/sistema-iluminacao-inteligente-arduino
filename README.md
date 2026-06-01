@@ -24,7 +24,7 @@ Desenvolver um sistema capaz de detectar a luminosidade ambiente e acionar autom
 
 ## 💻 Tecnologias Utilizadas
 
-* 🧠 Arduino IDE
+* 🧠 Wokwi IDE
 * 📡 MQTT
 * 🔗 Eclipse Mosquitto
 * 🧪 Tinkercad
