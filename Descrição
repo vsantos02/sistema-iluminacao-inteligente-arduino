@@ -1,57 +1,46 @@
 1. Descrição do Funcionamento e Uso
-
-Este projeto consiste em um protótipo de iluminação urbana automática utilizando um sensor de luminosidade (LDR), um LED e uma placa ESP32. O sistema monitora continuamente a luminosidade do ambiente e aciona automaticamente a iluminação quando o nível de luz fica abaixo de um valor de referência previamente definido.
-
-Além do acionamento automático, o sistema envia os dados de luminosidade para um broker MQTT por meio da internet, permitindo o monitoramento remoto das informações coletadas.
-
-Para reproduzir o projeto, é necessário montar o circuito conforme o diagrama apresentado, carregar o código na ESP32 e configurar uma conexão com a internet e um broker MQTT.
+Este projeto consiste em um protótipo de iluminação urbana automática utilizando um sensor de luminosidade (LDR), um LED e uma placa ESP32. O sistema monitora continuamente a luminosidade do ambiente e compara os valores lidos com um valor de referência definido no código.
+Quando a luminosidade fica abaixo desse valor, o LED é acionado automaticamente, simulando o funcionamento de um poste de iluminação pública. Quando a luminosidade é considerada suficiente, o LED permanece desligado.
+Além do funcionamento automático, o sistema utiliza o protocolo MQTT para enviar os valores de luminosidade e o estado da iluminação para um broker MQTT. Também é possível enviar comandos remotos para ligar, desligar ou retornar o sistema ao modo automático.
+Para reproduzir o projeto, é necessário montar o circuito conforme o diagrama apresentado, carregar o código na ESP32 e conectar o dispositivo a uma rede Wi-Fi com acesso à internet.
 
 2. Software Desenvolvido
-
 O software foi desenvolvido na linguagem C++ utilizando a Arduino IDE.
-
 Principais funcionalidades implementadas:
+* Leitura dos valores de luminosidade por meio do sensor LDR;
+* Processamento dos dados recebidos pelo sensor;
+* Acionamento automático do LED com base na luminosidade ambiente;
+* Conexão Wi-Fi utilizando a ESP32;
+* Comunicação com broker MQTT;
+* Recebimento de comandos remotos para controle da iluminação.
 
-Leitura dos valores do sensor LDR;
-Processamento dos dados de luminosidade;
-Acionamento automático do LED;
-Conexão Wi-Fi utilizando a ESP32;
-Comunicação com broker MQTT;
-Envio dos dados de luminosidade para monitoramento remoto;
-Publicação do estado da iluminação (ligada ou desligada).
 3. Hardware Utilizado
 
 Componentes utilizados:
-
-ESP32 DevKit V1;
-Sensor de luminosidade LDR;
-Resistor de 10 kΩ (divisor de tensão do LDR);
-LED (simulação da iluminação pública);
-Resistor de 220 Ω (limitação de corrente do LED);
-Protoboard;
-Cabos jumper.
-
-O protótipo foi inicialmente desenvolvido e testado em ambiente de simulação utilizando a plataforma Wokwi.
+* ESP32 DevKit V1;
+* Sensor de luminosidade LDR;
+* LED utilizado para representar a iluminação pública;
+* Resistor de 220 Ω para proteção do LED;
+* Cabos de conexão.
+O protótipo foi desenvolvido e testado em ambiente de simulação utilizando a plataforma Wokwi.
 
 4. Interfaces, Protocolos e Módulos de Comunicação
-
-O projeto utiliza comunicação sem fio por meio do módulo Wi-Fi integrado da ESP32.
-
+O projeto utiliza o módulo Wi-Fi integrado da ESP32 para realizar a comunicação com a internet.
 Protocolos utilizados:
-
-TCP/IP para comunicação com a internet;
-MQTT (Message Queuing Telemetry Transport) para troca de mensagens entre o dispositivo e o broker.
+* TCP/IP para comunicação em rede;
+* MQTT (Message Queuing Telemetry Transport) para troca de mensagens entre o dispositivo e o broker.
 
 Broker MQTT utilizado:
+* HiveMQ Broker Público.
 
-HiveMQ Broker Público.
-
-Os dados de luminosidade e o estado da iluminação são publicados em tópicos MQTT específicos, permitindo o monitoramento remoto do sistema.
+Tópicos MQTT utilizados:
+* mackenzie/iluminacao/luminosidade
+* mackenzie/iluminacao/estado
+* mackenzie/iluminacao/comando
+Os tópicos são utilizados para publicar os valores de luminosidade, informar o estado atual da iluminação e receber comandos remotos de controle.
 
 5. Comunicação via Internet e MQTT
-
-A comunicação com a internet é realizada pela ESP32 utilizando conexão Wi-Fi.
-
-Após estabelecer conexão com a rede, o dispositivo conecta-se ao broker MQTT e passa a enviar periodicamente os valores de luminosidade coletados pelo sensor LDR, bem como o estado atual da iluminação.
-
-Essa arquitetura permite que os dados sejam acessados remotamente por aplicações compatíveis com o protocolo MQTT, possibilitando monitoramento e futuras expansões para soluções de cidades inteligentes e Internet das Coisas (IoT).
+Após conectar-se à rede Wi-Fi, a ESP32 estabelece comunicação com o broker MQTT. Durante a execução do sistema, os valores de luminosidade lidos pelo sensor são enviados periodicamente para um tópico MQTT específico.
+O estado da iluminação também é publicado no broker, permitindo acompanhar se o LED está ligado ou desligado.
+Além disso, o sistema permanece inscrito em um tópico de comandos, possibilitando receber mensagens remotas. Os comandos "ON" e "OFF" permitem ligar ou desligar a iluminação manualmente, enquanto o comando "AUTO" retorna o funcionamento automático baseado na leitura do sensor de luminosidade.
+Essa arquitetura permite o monitoramento e o controle remoto do sistema por meio da internet, demonstrando a utilização do protocolo MQTT em aplicações de Internet das Coisas (IoT).
