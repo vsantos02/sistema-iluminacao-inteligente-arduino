@@ -24,10 +24,10 @@ Desenvolver um sistema capaz de detectar a luminosidade ambiente e acionar autom
 
 ## 💻 Tecnologias Utilizadas
 
-* 🧠 Wokwi IDE
+* 🖥️ ESP32
 * 📡 MQTT
-* 🔗 Eclipse Mosquitto
-* 🧪 Tinkercad
+* ☁️ HiveMQ Broker
+* 🧪 Wokwi IDE
 
 ---
 
